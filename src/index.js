@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./config/db.config');
 const bulkUploadRoutes = require('./routes/bulkUploadRoutes');
+const excelExportRoutes = require('./routes/excelExportRoutes');
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api', bulkUploadRoutes);
+app.use('/api', excelExportRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
